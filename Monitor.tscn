@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Monitor" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Line2D" type="Line2D" parent="."]

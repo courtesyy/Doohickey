@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/toggle1.mp3-9b3536387b377296aced2f9ec383f396.mp3str"
+
+[deps]
+
+source_file="res://Sounds/toggle1.mp3"
+dest_files=[ "res://.import/toggle1.mp3-9b3536387b377296aced2f9ec383f396.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

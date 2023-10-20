@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/scroll2.mp3-885c70a04771416e3060547fb9964119.mp3str"
+
+[deps]
+
+source_file="res://Sounds/scroll2.mp3"
+dest_files=[ "res://.import/scroll2.mp3-885c70a04771416e3060547fb9964119.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

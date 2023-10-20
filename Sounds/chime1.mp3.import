@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/chime1.mp3-9217343a31a5adb1fa60937ce5422133.mp3str"
+
+[deps]
+
+source_file="res://Sounds/chime1.mp3"
+dest_files=[ "res://.import/chime1.mp3-9217343a31a5adb1fa60937ce5422133.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

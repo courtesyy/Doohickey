@@ -1,9 +1,31 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Sprites/BG.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/sliderL.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/sliderR.png" type="Texture" id=3]
 [ext_resource path="res://Monitor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/knob/Knob.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/knob1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/knob2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/whiteUp.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/greenUp.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/blueUp.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/yellowUp.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/redUp.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/power1.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/power2.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/whiteDown.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/redDown.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/yellowDown.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/blueDown.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/greenDown.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/pairbuttons2.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/pairbuttons1.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/singlebuttonUp.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/singlebuttonDown.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/smallsliderR.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/smallsliderTop.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/smallsliderBottom.png" type="Texture" id=26]
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 2 )
@@ -32,6 +54,45 @@ region_rect = Rect2( 0, 0, 74, 74 )
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 74, 74 )
 
+[sub_resource type="Theme" id=8]
+HSlider/icons/grabber = ExtResource( 6 )
+HSlider/icons/grabber_disabled = ExtResource( 6 )
+HSlider/icons/grabber_highlight = ExtResource( 6 )
+
+[sub_resource type="BitmapFont" id=9]
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 25 )
+region_rect = Rect2( 0, 0, 35, 18 )
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 15, 45 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="Theme" id=12]
+HScrollBar/styles/grabber = SubResource( 14 )
+HScrollBar/styles/grabber_highlight = SubResource( 14 )
+HScrollBar/styles/grabber_pressed = SubResource( 14 )
+HScrollBar/styles/scroll = SubResource( 15 )
+HScrollBar/styles/scroll_focus = SubResource( 16 )
+VScrollBar/styles/grabber = SubResource( 13 )
+VScrollBar/styles/grabber_highlight = SubResource( 13 )
+VScrollBar/styles/grabber_pressed = SubResource( 13 )
+VScrollBar/styles/scroll = SubResource( 10 )
+VScrollBar/styles/scroll_focus = SubResource( 11 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 26 )
+region_rect = Rect2( 0, 0, 89, 21 )
+
 [node name="Root scene" type="Node2D"]
 
 [node name="That thang" type="Control" parent="."]
@@ -42,20 +103,26 @@ margin_bottom = 40.0
 texture = ExtResource( 1 )
 centered = false
 
-[node name="Large sliders" type="Control" parent="That thang"]
+[node name="Monitor" parent="That thang" instance=ExtResource( 4 )]
+
+[node name="Buttons" type="Control" parent="That thang"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Large sliders" type="Control" parent="That thang/Buttons"]
 margin_right = 40.0
 margin_bottom = 40.0
 theme = SubResource( 3 )
 
-[node name="SliderL" type="VScrollBar" parent="That thang/Large sliders"]
+[node name="SliderL" type="VScrollBar" parent="That thang/Buttons/Large sliders"]
 margin_left = 95.0
 margin_top = 198.0
 margin_right = 172.0
 margin_bottom = 627.0
 rect_rotation = 0.5
-page = 1.0
+value = 70.0
 
-[node name="SliderR" type="VScrollBar" parent="That thang/Large sliders"]
+[node name="SliderR" type="VScrollBar" parent="That thang/Buttons/Large sliders"]
 margin_left = 211.0
 margin_top = 199.0
 margin_right = 288.0
@@ -63,6 +130,142 @@ margin_bottom = 628.0
 custom_styles/grabber_highlight = SubResource( 5 )
 custom_styles/grabber = SubResource( 6 )
 custom_styles/grabber_pressed = SubResource( 7 )
-page = 1.0
+value = 20.0
 
-[node name="Monitor" parent="That thang" instance=ExtResource( 4 )]
+[node name="Knobs" type="Control" parent="That thang/Buttons"]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = SubResource( 8 )
+
+[node name="Knob1" parent="That thang/Buttons/Knobs" instance=ExtResource( 5 )]
+margin_left = 394.0
+margin_top = 119.0
+margin_right = 502.0
+margin_bottom = 227.0
+value = 30.0
+tick_count = 0
+ticks_on_borders = false
+title = " "
+travel_multiplier = 4.5
+value_font = SubResource( 9 )
+
+[node name="Knob2" parent="That thang/Buttons/Knobs" instance=ExtResource( 5 )]
+margin_left = 394.0
+margin_top = 266.0
+margin_right = 502.0
+margin_bottom = 374.0
+custom_icons/grabber_disabled = ExtResource( 7 )
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 7 )
+value = 80.0
+tick_count = 0
+ticks_on_borders = false
+title = " "
+travel_multiplier = 4.5
+value_font = SubResource( 9 )
+
+[node name="Color keys" type="Control" parent="That thang/Buttons"]
+margin_left = 758.0
+margin_top = 546.0
+margin_right = 798.0
+margin_bottom = 586.0
+
+[node name="ColorbuttonWhite" type="TextureButton" parent="That thang/Buttons/Color keys"]
+margin_left = 4.0
+margin_right = 97.0
+margin_bottom = 165.0
+action_mode = 0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 15 )
+
+[node name="ColorbuttonBlue" type="TextureButton" parent="That thang/Buttons/Color keys"]
+margin_left = 91.0
+margin_right = 171.0
+margin_bottom = 165.0
+action_mode = 0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 18 )
+
+[node name="ColorbuttonGreen" type="TextureButton" parent="That thang/Buttons/Color keys"]
+margin_left = 176.0
+margin_right = 260.0
+margin_bottom = 165.0
+action_mode = 0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 19 )
+
+[node name="ColorbuttonYellow" type="TextureButton" parent="That thang/Buttons/Color keys"]
+margin_left = 264.0
+margin_right = 347.0
+margin_bottom = 165.0
+action_mode = 0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 17 )
+
+[node name="ColorbuttonRed" type="TextureButton" parent="That thang/Buttons/Color keys"]
+margin_left = 351.0
+margin_right = 435.0
+margin_bottom = 165.0
+action_mode = 0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 16 )
+
+[node name="Small buttons" type="Control" parent="That thang/Buttons"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PairButtons" type="TextureButton" parent="That thang/Buttons/Small buttons"]
+margin_left = 382.0
+margin_top = 405.0
+margin_right = 463.0
+margin_bottom = 447.0
+toggle_mode = true
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 20 )
+
+[node name="Powerbutton" type="TextureButton" parent="That thang/Buttons/Small buttons"]
+margin_left = 1140.0
+margin_top = 338.0
+margin_right = 1190.0
+margin_bottom = 381.0
+toggle_mode = true
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+
+[node name="SingleButton" type="TextureButton" parent="That thang/Buttons/Small buttons"]
+margin_left = 499.0
+margin_top = 403.0
+margin_right = 539.0
+margin_bottom = 447.0
+toggle_mode = true
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+
+[node name="Small sliders" type="Control" parent="That thang/Buttons"]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = SubResource( 12 )
+
+[node name="SmallsliderR" type="VScrollBar" parent="That thang/Buttons/Small sliders"]
+margin_left = 563.0
+margin_top = 316.0
+margin_right = 584.0
+margin_bottom = 385.0
+step = 33.0
+
+[node name="HScrollBar" type="HScrollBar" parent="That thang/Buttons/Small sliders"]
+margin_left = 398.0
+margin_top = 509.0
+margin_right = 583.0
+margin_bottom = 528.0
+rect_rotation = 0.3
+
+[node name="HScrollBar2" type="HScrollBar" parent="That thang/Buttons/Small sliders"]
+margin_left = 362.0
+margin_top = 585.0
+margin_right = 564.0
+margin_bottom = 605.0
+custom_styles/grabber_highlight = SubResource( 17 )
+custom_styles/grabber = SubResource( 17 )
+custom_styles/grabber_pressed = SubResource( 17 )
+step = 20.0

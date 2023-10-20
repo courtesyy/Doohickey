@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/switch2.mp3-3379986d535407c02c8de8de837ee5fb.mp3str"
+
+[deps]
+
+source_file="res://Sounds/switch2.mp3"
+dest_files=[ "res://.import/switch2.mp3-3379986d535407c02c8de8de837ee5fb.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

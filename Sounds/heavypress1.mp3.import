@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/heavypress1.mp3-6371c57ad8b152d755ad6ac38f8112b9.mp3str"
+
+[deps]
+
+source_file="res://Sounds/heavypress1.mp3"
+dest_files=[ "res://.import/heavypress1.mp3-6371c57ad8b152d755ad6ac38f8112b9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

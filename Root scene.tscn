@@ -131,9 +131,12 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 4 )
 
-[node name="Bg" type="Sprite" parent="That thang"]
-texture = ExtResource( 1 )
-centered = false
+[node name="Grey BG" type="ColorRect" parent="That thang"]
+margin_left = 719.0
+margin_top = 49.0
+margin_right = 1238.0
+margin_bottom = 364.0
+color = Color( 0.141176, 0.141176, 0.141176, 1 )
 
 [node name="Monitor" type="Control" parent="That thang"]
 margin_right = 40.0
@@ -146,6 +149,10 @@ points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 width = 0.001
 default_color = Color( 0.647059, 1, 0.152941, 1 )
 joint_mode = 2
+
+[node name="Bg" type="Sprite" parent="That thang"]
+texture = ExtResource( 1 )
+centered = false
 
 [node name="Buttons" type="Control" parent="That thang"]
 margin_right = 40.0

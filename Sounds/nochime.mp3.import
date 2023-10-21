@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/nochime.mp3-b78634b2202d4920079485ebc981b2ef.mp3str"
+
+[deps]
+
+source_file="res://Sounds/nochime.mp3"
+dest_files=[ "res://.import/nochime.mp3-b78634b2202d4920079485ebc981b2ef.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

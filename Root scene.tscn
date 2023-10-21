@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Sprites/BG.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/sliderL.png" type="Texture" id=2]
@@ -47,6 +47,7 @@
 [ext_resource path="res://Sounds/scroll2.mp3" type="AudioStream" id=45]
 [ext_resource path="res://Sounds/scroll3.mp3" type="AudioStream" id=46]
 [ext_resource path="res://Sounds/scroll4.mp3" type="AudioStream" id=47]
+[ext_resource path="res://Sounds/nochime.mp3" type="AudioStream" id=48]
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 2 )
@@ -274,6 +275,10 @@ stream = ExtResource( 34 )
 [node name="Chime5" type="AudioStreamPlayer" parent="That thang/Buttons/Color keys"]
 stream = ExtResource( 35 )
 
+[node name="Nochime" type="AudioStreamPlayer" parent="That thang/Buttons/Color keys"]
+stream = ExtResource( 48 )
+bus = "SFX"
+
 [node name="Small buttons" type="Control" parent="That thang/Buttons"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -381,6 +386,7 @@ stream = ExtResource( 47 )
 [connection signal="pressed" from="That thang/Buttons/Color keys/ColorbuttonRed" to="That thang" method="_on_ColorbuttonRed_pressed"]
 [connection signal="pressed" from="That thang/Buttons/Color keys/ColorbuttonRed" to="That thang/Buttons/Color keys" method="_on_ColorbuttonRed_pressed"]
 [connection signal="toggled" from="That thang/Buttons/Small buttons/PairButtons" to="That thang/Buttons/Small buttons/PairButtons" method="_on_PairButtons_toggled"]
+[connection signal="toggled" from="That thang/Buttons/Small buttons/Powerbutton" to="That thang" method="_on_Powerbutton_toggled"]
 [connection signal="toggled" from="That thang/Buttons/Small buttons/Powerbutton" to="That thang/Buttons/Small buttons/Powerbutton" method="_on_Powerbutton_toggled"]
 [connection signal="toggled" from="That thang/Buttons/Small buttons/SingleButton" to="That thang/Buttons/Small buttons/SingleButton" method="_on_SingleButton_toggled"]
 [connection signal="scrolling" from="That thang/Buttons/Small sliders/SmallsliderR" to="That thang/Buttons/Small sliders" method="_on_SmallsliderR_scrolling"]

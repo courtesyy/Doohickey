@@ -57,6 +57,16 @@ func _getPosY():
 
 # stepped grey slider
 
+
+
+
+func _on_Powerbutton_toggled(button_pressed):
+	if button_pressed == true:
+		$Monitor/Line2D.visible = 0
+	if button_pressed == false:
+		$Monitor/Line2D.visible = 1
+
+
 # blue analog slider
 onready var analogSliderBlue = get_node("Buttons/Small sliders/Smallslider1");
 func getPointsToDraw():
@@ -216,6 +226,5 @@ func _displayLine():
 
 	
 	#line.points = framesPool[frameToDisplay];
-
 
 

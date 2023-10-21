@@ -4,12 +4,27 @@ func _ready():
 	pass 
 
 func _on_ColorbuttonWhite_pressed():
-	$Chime1.play()
+	if $"../Small buttons/Powerbutton".pressed == false:
+		$Chime1.play()
+	else:
+		$Nochime.play()
 func _on_ColorbuttonBlue_pressed():
-	$Chime2.play()
+	if $"../Small buttons/Powerbutton".pressed == false:
+		$Chime2.play()
+	else:
+		$Nochime.play()
 func _on_ColorbuttonGreen_pressed():
-	$Chime3.play()
+	if $"../Small buttons/Powerbutton".pressed == false:
+		$Chime3.play()
+	else:
+		$Nochime.play()
 func _on_ColorbuttonYellow_pressed():
-	$Chime4.play()
+	if $"../Small buttons/Powerbutton".pressed == false:
+		$Chime4.play()
+	else:
+		$Nochime.play()
 func _on_ColorbuttonRed_pressed():
-	$Chime5.play()
+	if $"../Small buttons/Powerbutton".pressed == false:
+		$Chime5.play()
+	else:
+		$Nochime.play()

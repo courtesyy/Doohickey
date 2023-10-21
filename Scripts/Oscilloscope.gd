@@ -26,12 +26,12 @@ var pointCount = 450;
 # yellow analog slider
 onready var analogSliderL = get_node("Buttons/Large sliders/SliderL");
 func _getScaleX():
-	return analogSliderL.value * 0.1;
+	return analogSliderL.value;
 
 # pink analog slider
 onready var analogSliderR = get_node("Buttons/Large sliders/SliderR");
 func _getScaleY():
-	return analogSliderR.value * 0.1;
+	return analogSliderR.value;
 
 # blue analog dial
 onready var analogDial1 = get_node("Buttons/Knobs/Knob1");
@@ -56,7 +56,13 @@ func getPointsToDraw():
 	var points = pointCount * percent;
 	return floor(points);
 
-# yellow stepped slider 
+# yellow stepped slider
+onready var analogSliderYellow = get_node("Buttons/Small sliders/Smallslider2");
+func getCountOffset():
+	######TODO: give this an offset so the right answer isnt turning it down 
+	var percent = analogSliderYellow.value / 100.0;
+	var points = pointCount * percent;
+	return floor(points);
 
 # white button 
 #onready var binaryButtonWhite = get_node("Buttons/Color keys/ColorbuttonWhite");
@@ -189,7 +195,8 @@ func _displayLine():
 
 	#for i in range(framesPool[frameToDisplay].size()):
 	for i in range(getPointsToDraw()):
-		line.set_point_position(i, framesPool[frameToDisplay][i]);
+		##### TODO: MAKE THIS LOOP back around
+		line.set_point_position((i - getCountOffset()), framesPool[frameToDisplay][i]);
 	
 	#line.points = framesPool[frameToDisplay];
 

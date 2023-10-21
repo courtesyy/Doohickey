@@ -25,13 +25,21 @@ var pointCount = 450;
 
 # yellow analog slider
 onready var analogSliderL = get_node("Buttons/Large sliders/SliderL");
+var xScaleMax = 1.75;
+var xScaleMin = 0.5;
 func _getScaleX():
-	return analogSliderL.value;
+	var percent = analogSliderL.value / 100.0;
+	var xscale = ((xScaleMax - xScaleMin) * percent) + xScaleMin;
+	return xscale;
 
 # pink analog slider
 onready var analogSliderR = get_node("Buttons/Large sliders/SliderR");
+var yScaleMax = 1.1;
+var yScaleMin = 0.5;
 func _getScaleY():
-	return analogSliderR.value;
+	var percent = analogSliderR.value / 100.0;
+	var xscale = ((yScaleMax - yScaleMin) * percent) + yScaleMin;
+	return xscale;
 
 # blue analog dial
 onready var analogDial1 = get_node("Buttons/Knobs/Knob1");
@@ -196,7 +204,16 @@ func _displayLine():
 	#for i in range(framesPool[frameToDisplay].size()):
 	for i in range(getPointsToDraw()):
 		##### TODO: MAKE THIS LOOP back around
-		line.set_point_position((i - getCountOffset()), framesPool[frameToDisplay][i]);
+		#line.set_point_position((i - getCountOffset()), framesPool[frameToDisplay][i]);
+
+		var indexPinged = i - getCountOffset();
+
+		var pointx = framesPool[frameToDisplay][indexPinged].x *_getScaleX();
+		var pointy = framesPool[frameToDisplay][indexPinged].y * _getScaleY();
+		var vector = Vector2(pointx, pointy);
+
+		line.set_point_position(indexPinged, vector);
+
 	
 	#line.points = framesPool[frameToDisplay];
 

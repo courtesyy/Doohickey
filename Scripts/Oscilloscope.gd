@@ -76,28 +76,28 @@ func getCountOffset():
 #onready var binaryButtonWhite = get_node("Buttons/Color keys/ColorbuttonWhite");
 func _on_ColorbuttonWhite_pressed():
 	frameToDisplay = 0;
-	pass # Replace with function body.
+	$Monitor/Line2D.default_color = Color.from_hsv(0.0, 0.0, 0.92)
 
 # blue button 
 #onready var binaryButtonBlue = get_node("Buttons/Color keys/ColorbuttonBlue");
 func _on_ColorbuttonBlue_pressed():
 	frameToDisplay = 1;
-	pass # Replace with function body.
+	$Monitor/Line2D.default_color = Color.from_hsv(0.55, 0.85, 1.0)
 
 # green button 
 func _on_ColorbuttonGreen_pressed():
 	frameToDisplay = 2;
-	pass # Replace with function body.
+	$Monitor/Line2D.default_color = Color.from_hsv(0.33, 0.85, 1.0)
 
 # yellow button 
 func _on_ColorbuttonYellow_pressed():
 	frameToDisplay = 3;
-	pass # Replace with function body.
+	$Monitor/Line2D.default_color = Color.from_hsv(0.16, 0.85, 1.0)
 
 # red button 
 func _on_ColorbuttonRed_pressed():
 	frameToDisplay = 4;
-	pass # Replace with function body.
+	$Monitor/Line2D.default_color = Color.from_hsv(0.01, 0.85, 1.0)
 
 # pink on/off button
 # disables/enables the screen 

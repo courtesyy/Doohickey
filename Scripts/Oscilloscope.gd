@@ -41,13 +41,25 @@ func getScaleY():
 
 # blue analog dial
 onready var analogDial1 = get_node("Buttons/Knobs/Knob1");
-func getPosX():
+func getRotateOne():
 	return analogDial1.value;
+# current point the count starts from. a slider might control this but the real answer is 0
+# maybe use that other thing's behavior 
+func getStartingPoint():
+	return 0;
+# how many points the current point will increase per unit of time and how many points are drawn. a slider controls this, the real answer is the size of each frame
+func getFrameStarting():
+	return 0;
+func getFramesFromStarting():
+	return 0;
 
 # green analog dial
 onready var analogDial2 = get_node("Buttons/Knobs/Knob2");
-func getPosY():
+func getRotateTwo():
 	return analogDial2.value;
+
+# how many multiples of the points per frame out from starting
+var modifiedFrameIndex = 0;
 
 # 64 binary 
 # ???????
@@ -138,26 +150,8 @@ func _process(delta):
 	_displayLine();
 
 
-
-# current point the count starts from. a slider might control this but the real answer is 0
-# maybe use that other thing's behavior 
-func getStartingPoint():
-	return 0;
-
-
-# how many points the current point will increase per unit of time and how many points are drawn. a slider controls this, the real answer is the size of each frame
-func getFrameStarting():
-	return 0;
-func getFramesFromStarting():
-	return 0;
-
-
-
 # time counter. paused when animating but not when the screen is off. used with unit of time.
 var timeCounter = 0.0;
-
-# how many multiples of the points per frame out from starting
-var modifiedFrameIndex = 0;
 
 func _calculateTime(deltaTime):
 
@@ -202,4 +196,12 @@ func _displayLine():
 		var vector = Vector2(pointx, pointy);
 
 		line.set_point_position(indexPinged, vector);
+
+		# rotate 
+		var rotation = (getRotateOne() / 100) * 360;
+		line.rotation_degrees = rotation;
+
+		# width
+		var width = (getRotateTwo() / 100) * 0.01;
+		line.width = width;
 

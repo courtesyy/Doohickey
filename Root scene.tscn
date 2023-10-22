@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Sprites/BG.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/sliderL.png" type="Texture" id=2]
@@ -48,6 +48,7 @@
 [ext_resource path="res://Sounds/scroll3.mp3" type="AudioStream" id=46]
 [ext_resource path="res://Sounds/scroll4.mp3" type="AudioStream" id=47]
 [ext_resource path="res://Sounds/nochime.mp3" type="AudioStream" id=48]
+[ext_resource path="res://Data/Frames.gd" type="Script" id=49]
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 2 )
@@ -130,6 +131,9 @@ region_rect = Rect2( 0, 0, 89, 21 )
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 4 )
+
+[node name="Data" type="Node" parent="That thang"]
+script = ExtResource( 49 )
 
 [node name="Grey BG" type="ColorRect" parent="That thang"]
 margin_left = 719.0
@@ -284,7 +288,6 @@ stream = ExtResource( 35 )
 
 [node name="Nochime" type="AudioStreamPlayer" parent="That thang/Buttons/Color keys"]
 stream = ExtResource( 48 )
-bus = "SFX"
 
 [node name="Small buttons" type="Control" parent="That thang/Buttons"]
 margin_right = 40.0

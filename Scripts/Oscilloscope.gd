@@ -4,7 +4,6 @@ onready var data = get_node("Data");
 
 var frameToDisplay = 0;
 
-
 # helper function since I don't see an implementation of this?
 # loop around ex. min is 0, max is 6, 7 loops back to 0
 # shitty implementation since modulo doesn't work with floats but good enough for gamejam
@@ -25,7 +24,7 @@ onready var analogSliderL = get_node("Buttons/Large sliders/SliderL");
 var xScaleMax = 1.66;
 var xScaleMin = -1.66;
 var offsetXSlider = 42; #TODO implement 
-func _getScaleX():
+func getScaleX():
 	var percent = analogSliderL.value / 100.0;
 	var xscale = ((xScaleMax - xScaleMin) * percent) + xScaleMin;
 	return xscale;
@@ -35,24 +34,28 @@ onready var analogSliderR = get_node("Buttons/Large sliders/SliderR");
 var yScaleMax = 1.08;
 var yScaleMin = -1.08;
 var offsetYSlider = 9;
-func _getScaleY():
+func getScaleY():
 	var percent = analogSliderR.value / 100.0;
 	var xscale = ((yScaleMax - yScaleMin) * percent) + yScaleMin;
 	return xscale;
 
 # blue analog dial
 onready var analogDial1 = get_node("Buttons/Knobs/Knob1");
-func _getPosX():
+func getPosX():
 	return analogDial1.value;
 
 # green analog dial
 onready var analogDial2 = get_node("Buttons/Knobs/Knob2");
-func _getPosY():
+func getPosY():
 	return analogDial2.value;
 
 # 64 binary 
 
-# o binary 
+# o binary
+# can pause the animation/moving between frames. 
+onready var binaryCircle = get_node("Buttons/Small buttons/SingleButton"); 
+func isAnimating():
+	return !(binaryCircle.pressed);
 
 # stepped grey slider
 
@@ -118,16 +121,50 @@ func _ready():
 func _process(delta):
 	if(!allset): return;
 
-	_calculateTime();
+	_calculateTime(delta);
 
 	_transformData();
 	_displayLine();
 
-# determine what subset of the data is used for the line
-# how many points and where to start/end
-# time continues even if screen is turned off
-func _calculateTime():
-	pass
+
+
+# current point the count starts from. a slider might control this but the real answer is 0
+func getStartingPoint():
+	return 0;
+
+# how many points the current point will increase per unit of time and how many points are drawn. a slider controls this, the real answer is the size of each frame
+func getFrameStarting():
+	return 0;
+func getFramesFromStarting():
+	return 0;
+
+# unit of time. changing this is changed by the dial and controls the speed of the animation. deltatime passing this moves to the next 
+# current value 
+var timeUnit = 0.5;
+# these are for the slider (yellow)
+var timeUnitMin = 0.1;
+var timeUnitMax = 2.0;
+
+# time counter. paused when animating but not when the screen is off. used with unit of time.
+var timeCounter = 0.0;
+
+# how many multiples of the points per frame out from starting
+var modifiedFrameIndex = 0;
+
+func _calculateTime(deltaTime):
+
+	# add to point time only if animating
+	if(!isAnimating()): return;
+
+	timeCounter = timeCounter + deltaTime;
+
+	# tick frame if a unit of time passes
+	if(timeCounter > timeUnit):
+		timeCounter = 0.0;
+		modifiedFrameIndex = modifiedFrameIndex + 1;
+		#temp using regular frames to test time 
+		frameToDisplay = loop(frameToDisplay + 1, data.numAnimationFrames);
+
 
 # apply fake oscilloscope
 func _transformData():
@@ -146,13 +183,13 @@ func _displayLine():
 		##### TODO: MAKE THIS LOOP back around
 		#line.set_point_position((i - getCountOffset()), framesPool[frameToDisplay][i]);
 
-		var indexPinged = loop(i - getCountOffset(), data.framesPool[frameToDisplay].size());
+		var frameIndex = data.getFrameIndex(frameToDisplay);
 
-		var pointx = data.framesPool[frameToDisplay][indexPinged].x * _getScaleX();
-		var pointy = data.framesPool[frameToDisplay][indexPinged].y * _getScaleY();
+		var indexPinged = loop(i - getCountOffset(), data.framesPool[frameIndex].size());
+
+		var pointx = data.framesPool[frameIndex][indexPinged].x * getScaleX();
+		var pointy = data.framesPool[frameIndex][indexPinged].y * getScaleY();
 		var vector = Vector2(pointx, pointy);
 
 		line.set_point_position(indexPinged, vector);
-
-
 

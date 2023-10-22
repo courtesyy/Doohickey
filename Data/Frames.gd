@@ -53,6 +53,9 @@ func getMaxFrameSize():
 			maxs = frames[i].size();
 	return maxs;
 
+# from time not tied to any frame. treats as list of frames 
+func getPointFromTime(time):
+	pass;
 
 #scale to fit window- magic numbers
 var scale = 0.0009;
@@ -65,8 +68,6 @@ func loadData():
 	frameSize = getMaxFrameSize();
 	
 	# convert the nested array to PoolVector2Array to match Line2D 
-
-	print("framsize ", frameSize, " numframes ", numFrames);
 	
 	framesPool.resize(numFrames);
 	for i in range(numFrames):

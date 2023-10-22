@@ -50,6 +50,7 @@ func getPosY():
 	return analogDial2.value;
 
 # 64 binary 
+# ???????
 
 # o binary
 # can pause the animation/moving between frames. 
@@ -58,6 +59,16 @@ func isAnimating():
 	return !(binaryCircle.pressed);
 
 # stepped grey slider
+# time scale 
+# unit of time. changing this is changed by the dial and controls the speed of the animation. deltatime passing this moves to the next 
+# these are for the slider (yellow)
+var timeUnitMin = 0.02;
+var timeUnitMax = 0.8;
+onready var steppedSlider = get_node("Buttons/Small sliders/SmallsliderR");
+func getTimeScale():
+	var percent = steppedSlider.value / 100.0;
+	var sscale = ((timeUnitMax - timeUnitMin) * percent) + timeUnitMin;
+	return sscale;
 
 # pink on/off button
 # disables/enables the screen 
@@ -129,8 +140,10 @@ func _process(delta):
 
 
 # current point the count starts from. a slider might control this but the real answer is 0
+# maybe use that other thing's behavior 
 func getStartingPoint():
 	return 0;
+
 
 # how many points the current point will increase per unit of time and how many points are drawn. a slider controls this, the real answer is the size of each frame
 func getFrameStarting():
@@ -138,12 +151,7 @@ func getFrameStarting():
 func getFramesFromStarting():
 	return 0;
 
-# unit of time. changing this is changed by the dial and controls the speed of the animation. deltatime passing this moves to the next 
-# current value 
-var timeUnit = 0.5;
-# these are for the slider (yellow)
-var timeUnitMin = 0.1;
-var timeUnitMax = 2.0;
+
 
 # time counter. paused when animating but not when the screen is off. used with unit of time.
 var timeCounter = 0.0;
@@ -157,6 +165,8 @@ func _calculateTime(deltaTime):
 	if(!isAnimating()): return;
 
 	timeCounter = timeCounter + deltaTime;
+
+	var timeUnit = getTimeScale();
 
 	# tick frame if a unit of time passes
 	if(timeCounter > timeUnit):

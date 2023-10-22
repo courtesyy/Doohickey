@@ -395,6 +395,7 @@ stream = ExtResource( 47 )
 [connection signal="pressed" from="That thang/Buttons/Color keys/ColorbuttonYellow" to="That thang/Buttons/Color keys" method="_on_ColorbuttonYellow_pressed"]
 [connection signal="pressed" from="That thang/Buttons/Color keys/ColorbuttonRed" to="That thang" method="_on_ColorbuttonRed_pressed"]
 [connection signal="pressed" from="That thang/Buttons/Color keys/ColorbuttonRed" to="That thang/Buttons/Color keys" method="_on_ColorbuttonRed_pressed"]
+[connection signal="toggled" from="That thang/Buttons/Small buttons/PairButtons" to="That thang" method="_on_PairButtons_toggled"]
 [connection signal="toggled" from="That thang/Buttons/Small buttons/PairButtons" to="That thang/Buttons/Small buttons/PairButtons" method="_on_PairButtons_toggled"]
 [connection signal="toggled" from="That thang/Buttons/Small buttons/Powerbutton" to="That thang" method="_on_Powerbutton_toggled"]
 [connection signal="toggled" from="That thang/Buttons/Small buttons/Powerbutton" to="That thang/Buttons/Small buttons/Powerbutton" method="_on_Powerbutton_toggled"]

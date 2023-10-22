@@ -61,8 +61,42 @@ func getRotateTwo():
 # how many multiples of the points per frame out from starting
 var modifiedFrameIndex = 0;
 
+
+var red = Color.from_hsv(0.01, 0.85, 1.0);
+var white = Color.from_hsv(0.0, 0.0, 0.92);
+var blue = Color.from_hsv(0.55, 0.85, 1.0);
+var green = Color.from_hsv(0.33, 0.85, 1.0);
+var yellow = Color.from_hsv(0.16, 0.85, 1.0);
+var grey = Color.from_hsv(0.14, 0.14, 0.14);
+var currentColor = green;
+var colorLine = true;
+
+func setColor(color):
+	currentColor = color;
+	if(colorLine):
+		setLineColor(color);
+	else:
+		setBGColor(color);
+
+func setLineColor(color):
+	$Monitor/Line2D.default_color = color;
+
+func setBGColor(color):
+	$"Grey BG".color = color;
+
 # 64 binary 
-# ???????
+onready var binaryTwo = get_node("Buttons/Small buttons/PairButtons"); 
+func _on_PairButtons_toggled(button_pressed:bool):
+	if(button_pressed):
+		setLineColor(currentColor);
+		$"Grey BG".color = grey;
+		colorLine = true;
+	else:
+		setLineColor(grey);
+		$"Grey BG".color = currentColor;
+		colorLine = false;
+
+
 
 # o binary
 # can pause the animation/moving between frames. 
@@ -109,28 +143,23 @@ func getCountOffset():
 
 # white button 
 func _on_ColorbuttonWhite_pressed():
-	#frameToDisplay = 0;
-	$Monitor/Line2D.default_color = Color.from_hsv(0.0, 0.0, 0.92)
+	setColor(white);
 
 # blue button 
 func _on_ColorbuttonBlue_pressed():
-	#frameToDisplay = 1;
-	$Monitor/Line2D.default_color = Color.from_hsv(0.55, 0.85, 1.0)
+	setColor(blue);
 
 # green button 
 func _on_ColorbuttonGreen_pressed():
-	#frameToDisplay = 2;
-	$Monitor/Line2D.default_color = Color.from_hsv(0.33, 0.85, 1.0)
+	setColor(green);
 
 # yellow button 
 func _on_ColorbuttonYellow_pressed():
-	#frameToDisplay = 3;
-	$Monitor/Line2D.default_color = Color.from_hsv(0.16, 0.85, 1.0)
+	setColor(yellow);
 
 # red button 
 func _on_ColorbuttonRed_pressed():
-	#frameToDisplay = 4;
-	$Monitor/Line2D.default_color = Color.from_hsv(0.01, 0.85, 1.0)
+	setColor(red);
 
 var startingPoint = 0;
 
@@ -193,6 +222,7 @@ func _displayLine():
 
 		var pointx = data.framesPool[frameIndex][indexPinged].x * getScaleX();
 		var pointy = data.framesPool[frameIndex][indexPinged].y * getScaleY();
+
 		var vector = Vector2(pointx, pointy);
 
 		line.set_point_position(indexPinged, vector);

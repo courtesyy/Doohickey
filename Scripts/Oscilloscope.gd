@@ -87,7 +87,7 @@ func setBGColor(color):
 # 64 binary 
 onready var binaryTwo = get_node("Buttons/Small buttons/PairButtons"); 
 func _on_PairButtons_toggled(button_pressed:bool):
-	if(button_pressed):
+	if(!button_pressed):
 		setLineColor(currentColor);
 		$"Grey BG".color = grey;
 		colorLine = true;

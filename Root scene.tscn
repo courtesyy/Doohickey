@@ -175,7 +175,7 @@ margin_right = 172.0
 margin_bottom = 627.0
 rect_rotation = 0.5
 step = 3.0
-value = 69.0
+value = 54.0
 
 [node name="SliderR" type="VScrollBar" parent="That thang/Buttons/Large sliders"]
 margin_left = 211.0
@@ -186,7 +186,7 @@ custom_styles/grabber_highlight = SubResource( 5 )
 custom_styles/grabber = SubResource( 6 )
 custom_styles/grabber_pressed = SubResource( 7 )
 step = 3.0
-value = 21.0
+value = 9.0
 
 [node name="Scroll1" type="AudioStreamPlayer" parent="That thang/Buttons/Large sliders"]
 stream = ExtResource( 43 )
@@ -361,7 +361,7 @@ margin_right = 583.0
 margin_bottom = 528.0
 rect_rotation = 0.3
 step = 2.0
-value = 90.0
+value = 16.0
 
 [node name="Smallslider2" type="HScrollBar" parent="That thang/Buttons/Small sliders"]
 margin_left = 362.0
@@ -372,7 +372,7 @@ custom_styles/grabber_highlight = SubResource( 17 )
 custom_styles/grabber = SubResource( 17 )
 custom_styles/grabber_pressed = SubResource( 17 )
 step = 20.0
-value = 40.0
+value = 20.0
 
 [node name="Scroll2" type="AudioStreamPlayer2D" parent="That thang/Buttons/Small sliders"]
 stream = ExtResource( 45 )

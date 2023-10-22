@@ -353,6 +353,7 @@ margin_top = 316.0
 margin_right = 584.0
 margin_bottom = 385.0
 step = 33.0
+value = 33.0
 
 [node name="Smallslider1" type="HScrollBar" parent="That thang/Buttons/Small sliders"]
 margin_left = 398.0

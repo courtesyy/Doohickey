@@ -21,8 +21,8 @@ func loop(value, maxValue, minValue = 0):
 
 # yellow analog slider
 onready var analogSliderL = get_node("Buttons/Large sliders/SliderL");
-var xScaleMax = 1.66;
-var xScaleMin = -1.66;
+var xScaleMax = 3.0;
+var xScaleMin = -3.0;
 var offsetXSlider = 42; #TODO implement 
 func getScaleX():
 	var percent = analogSliderL.value / 100.0;
@@ -31,8 +31,8 @@ func getScaleX():
 
 # pink analog slider
 onready var analogSliderR = get_node("Buttons/Large sliders/SliderR");
-var yScaleMax = 1.08;
-var yScaleMin = -1.08;
+var yScaleMax = 2.5;
+var yScaleMin = -2.5;
 var offsetYSlider = 9;
 func getScaleY():
 	var percent = analogSliderR.value / 100.0;
@@ -86,27 +86,27 @@ func getCountOffset():
 
 # white button 
 func _on_ColorbuttonWhite_pressed():
-	frameToDisplay = 0;
+	#frameToDisplay = 0;
 	$Monitor/Line2D.default_color = Color.from_hsv(0.0, 0.0, 0.92)
 
 # blue button 
 func _on_ColorbuttonBlue_pressed():
-	frameToDisplay = 1;
+	#frameToDisplay = 1;
 	$Monitor/Line2D.default_color = Color.from_hsv(0.55, 0.85, 1.0)
 
 # green button 
 func _on_ColorbuttonGreen_pressed():
-	frameToDisplay = 2;
+	#frameToDisplay = 2;
 	$Monitor/Line2D.default_color = Color.from_hsv(0.33, 0.85, 1.0)
 
 # yellow button 
 func _on_ColorbuttonYellow_pressed():
-	frameToDisplay = 3;
+	#frameToDisplay = 3;
 	$Monitor/Line2D.default_color = Color.from_hsv(0.16, 0.85, 1.0)
 
 # red button 
 func _on_ColorbuttonRed_pressed():
-	frameToDisplay = 4;
+	#frameToDisplay = 4;
 	$Monitor/Line2D.default_color = Color.from_hsv(0.01, 0.85, 1.0)
 
 var startingPoint = 0;

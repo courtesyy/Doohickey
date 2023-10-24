@@ -122,9 +122,9 @@ var power = true;
 func _on_Powerbutton_toggled(button_pressed):
 	power = !button_pressed;
 	if button_pressed == true:
-		$Monitor/Line2D.visible = 0
+		$"Monitor/Cover Monitor".visible = 1
 	if button_pressed == false:
-		$Monitor/Line2D.visible = 1
+		$"Monitor/Cover Monitor".visible = 0
 
 # blue analog slider
 onready var analogSliderBlue = get_node("Buttons/Small sliders/Smallslider1");
@@ -143,23 +143,28 @@ func getCountOffset():
 
 # white button 
 func _on_ColorbuttonWhite_pressed():
-	setColor(white);
+	if $"Buttons/Small buttons/Powerbutton".pressed == false:
+		setColor(white);
 
 # blue button 
 func _on_ColorbuttonBlue_pressed():
-	setColor(blue);
+	if $"Buttons/Small buttons/Powerbutton".pressed == false:
+		setColor(blue);
 
 # green button 
 func _on_ColorbuttonGreen_pressed():
-	setColor(green);
+	if $"Buttons/Small buttons/Powerbutton".pressed == false:
+		setColor(green);
 
 # yellow button 
 func _on_ColorbuttonYellow_pressed():
-	setColor(yellow);
+	if $"Buttons/Small buttons/Powerbutton".pressed == false:
+		setColor(yellow);
 
 # red button 
 func _on_ColorbuttonRed_pressed():
-	setColor(red);
+	if $"Buttons/Small buttons/Powerbutton".pressed == false:
+		setColor(red);
 
 var startingPoint = 0;
 

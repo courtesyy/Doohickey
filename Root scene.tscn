@@ -153,6 +153,18 @@ points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 width = 0.001
 default_color = Color( 0.160784, 1, 0.145098, 1 )
 
+[node name="Cover Monitor" type="ColorRect" parent="That thang/Monitor"]
+visible = false
+anchor_left = 21.52
+anchor_top = 3.728
+anchor_right = 21.52
+anchor_bottom = 3.728
+margin_left = -97.8
+margin_top = -72.12
+margin_right = 355.2
+margin_bottom = 198.88
+color = Color( 0.141176, 0.141176, 0.141176, 1 )
+
 [node name="Bg" type="Sprite" parent="That thang"]
 texture = ExtResource( 1 )
 centered = false
@@ -382,6 +394,10 @@ stream = ExtResource( 46 )
 
 [node name="Scroll4" type="AudioStreamPlayer2D" parent="That thang/Buttons/Small sliders"]
 stream = ExtResource( 47 )
+
+[node name="Control" type="Control" parent="That thang"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [connection signal="scrolling" from="That thang/Buttons/Large sliders/SliderL" to="That thang/Buttons/Large sliders" method="_on_SliderL_scrolling"]
 [connection signal="scrolling" from="That thang/Buttons/Large sliders/SliderR" to="That thang/Buttons/Large sliders" method="_on_SliderR_scrolling"]
